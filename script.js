@@ -4,6 +4,12 @@ function ComputerChoice() {
   return choices[randomIndex];
 }
 
+function Scramble(){
+  const ScrambleOptions = ["Steen","Papier","Schaar"];
+  const RandomScramble = Math.floor(Math.random() * ScrambleOptions.length);
+  return ScrambleOptions[RandomScramble];
+}
+
 function determineWinner(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
     return "Gelijk Spel!";
@@ -19,10 +25,36 @@ function determineWinner(playerChoice, computerChoice) {
 }
 
 function playGame(playerChoice) {
-  const computerChoice = ComputerChoice();
+  var difficulty = document.getElementById("Diff");
+  var computerChoice;
+
+  if (difficulty.checked === true){
+    if (playerChoice === "Steen") {
+      computerChoice = "Papier"
+    } else if (playerChoice === "Papier") {
+      computerChoice = "Schaar"
+    } else {
+      computerChoice = "Steen"
+    } 
+  } else { 
+    computerChoice = ComputerChoice();  
+  }
+
+  while (ScrambleTime !== 0){
+    setTimeout(() => {
+      Scramble();
+    }, 50);
+    ScrambleTime = ScrambleTime - 1;
+    console.log(ScrambleTime);
+    document.getElementById("human").innerHTML = Scramble;
+    document.getElementById("computer").innerHTML = Scramble;
+  }
+
   const result = determineWinner(playerChoice, computerChoice);
-  
-  document.getElementById("result").innerHTML = result;
-  document.getElementById("human").innerHTML = playerChoice;
-  document.getElementById("computer").innerHTML = computerChoice;
+  setTimeout(() => {
+    document.getElementById("result").innerHTML = result;
+    document.getElementById("human").innerHTML = playerChoice;
+    document.getElementById("computer").innerHTML = computerChoice;
+  }, 5000);
+
 }
