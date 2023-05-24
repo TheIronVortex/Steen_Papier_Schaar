@@ -14,20 +14,18 @@
         </div>
       </div>
       <div class="row">
-        <div class="col">
-          <form>
-            <span class="btn btn-dark" name="Steen" onclick="playGame('Steen')">Steen</span>
-            <span class="btn btn-dark" name="Papier" onclick="playGame('Papier')">Papier</span>
-            <span class="btn btn-dark" name="Schaar" onclick="playGame('Schaar')">Schaar</span>
-          </form>
+        <div  class="col">
+          <a name="Steen" onclick="playGame('Steen')"><img style="height:200px;width:170px;" src="steen.png">Steen</a>
+          <a name="Papier" onclick="playGame('Papier')"><img style="height:200px;width:170px;" src="papier.png">Papier</a>
+          <a name="Schaar" onclick="playGame('Schaar')"><img style="height:200px;width:170px;" src="schaar.png">Schaar</a>
         </div>
       </div>
       <div class="row">
-        <div class="col border border-dark m-1 p-2"><p>Jij:</p>
+        <div class="col border rounded border-dark m-1 p-2"><p>Jij:</p>
           <h1 id="human"></h1>
         </div>
         
-        <div class="col border border-dark m-1 p-2"><p>Computer:</p>
+        <div class="col border rounded border-dark m-1 p-2"><p>Computer:</p>
           <h1 id="computer"></h1>
         </div>
       </div>
