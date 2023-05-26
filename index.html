@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">  </head>
 
-  <body style="background-color: burlywood;">
+  <body style="background-color: white;">
     <div class="container">
       <div class="row">
         <div class="col">
@@ -15,30 +15,54 @@
       </div>
       <div class="row">
         <div  class="col-7">
-          <a name="Steen" onclick="playGame('Steen')"><img style="height:200px;width:170px;" src="steen.png">Steen</a>
-          <a name="Papier" onclick="playGame('Papier')"><img style="height:200px;width:170px;" src="papier.png">Papier</a>
-          <a name="Schaar" onclick="playGame('Schaar')"><img style="height:200px;width:170px;" src="schaar.png">Schaar</a>
+          <a name="Steen" onclick="playGame('Steen')"><img style="height:200px;width:170px;" src="Steen.png">Steen</a>
+          <a name="Papier" onclick="playGame('Papier')"><img style="height:200px;width:170px;" src="Papier.png">Papier</a>
+          <a name="Schaar" onclick="playGame('Schaar')"><img style="height:200px;width:170px;" src="Schaar.png">Schaar</a>
         </div>
         <div class="col-5">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="Diff">
             <label class="form-check-label" for="Diff">
-              impossible Difficuty!!!
+              Impossible Difficuty!
             </label>
-          </div>          
+          </div>
+          
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="Fun">
+            <label class="form-check-label" for="Fun">
+              Fun Mode!
+            </label>
+          </div> 
         </div>
+      </div>      
+      <div class="row">
+        <h2 style="height:50px;" class="text-center" id="result"></h2>
       </div>
       <div class="row">
-        <div class="col border rounded border-dark m-1 p-2"><p>Jij:</p>
+        <div style="height:300px;" class="col border rounded border-dark m-1 p-2" id="Speler"><p>Jij:</p>
           <h1 id="human"></h1>
-        </div>
-        
-        <div class="col border rounded border-dark m-1 p-2"><p>Computer:</p>
+        </div>    
+        <div  class="col border rounded border-dark m-1 p-2" id="PC"><p>Computer:</p>
           <h1 id="computer"></h1>
         </div>
       </div>
+
       <div class="row">
-        <p id="result"></p>
+        <div class="col-4 border border-dark rounded m-1 p-2 text-center">
+          <table class="table border-dark">
+            <tr>
+              <th>Jouw Score</th>
+              <th>Computer Score</th>
+            </tr>
+            <tr>
+              <td id="SpelerScore">0</td>
+              <td id="PCScore">0</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-2 m-1">
+          <button class="btn btn-dark" onclick="ResetAll()"><h2 class="text-white">Reset</h2></button>
+        </div>
       </div>
     </div>
   </body>

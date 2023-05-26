@@ -1,3 +1,22 @@
+var FunMode = document.getElementById("Fun");
+var colors = ["lightred", "orange", "yellow", "green", "violet", "pink", "cyan", "teal", "gold"];
+var i = 1;
+var playerScore = 0;
+var computerScore = 0;
+
+window.setInterval(function(){
+  if (FunMode.checked == true) {
+    document.body.style.backgroundColor = colors[i];
+    i++;
+    if (i === colors.length){
+      i=0;
+    }
+  }
+  else {
+    document.body.style.backgroundColor = "white";
+  }
+},150);
+
 function ComputerChoice() {
   const choices = ["Steen", "Papier", "Schaar"];
   const randomIndex = Math.floor(Math.random() * choices.length);
@@ -18,13 +37,23 @@ function determineWinner(playerChoice, computerChoice) {
     (playerChoice === "Papier" && computerChoice === "Steen") ||
     (playerChoice === "Schaar" && computerChoice === "Papier")
   ) {
+    playerScore++ ;
     return "Jij wint!";
+    
   } else {
+    computerScore++ ;
     return "Computer wint!";
   }
 }
 
+function reset() {
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("human").innerHTML = "";
+  document.getElementById("computer").innerHTML = "";
+}
+
 function playGame(playerChoice) {
+  reset();
   var difficulty = document.getElementById("Diff");
   var computerChoice;
 
@@ -40,21 +69,21 @@ function playGame(playerChoice) {
     computerChoice = ComputerChoice();  
   }
 
-  while (ScrambleTime !== 0){
-    setTimeout(() => {
-      Scramble();
-    }, 50);
-    ScrambleTime = ScrambleTime - 1;
-    console.log(ScrambleTime);
-    document.getElementById("human").innerHTML = Scramble;
-    document.getElementById("computer").innerHTML = Scramble;
-  }
-
   const result = determineWinner(playerChoice, computerChoice);
   setTimeout(() => {
     document.getElementById("result").innerHTML = result;
-    document.getElementById("human").innerHTML = playerChoice;
-    document.getElementById("computer").innerHTML = computerChoice;
-  }, 5000);
+    document.getElementById("human").innerHTML = "<img style='height:200px;width:170px;' src=" + playerChoice + ".png>" + playerChoice;
+    document.getElementById("computer").innerHTML = "<img style='height:200px;width:170px;' src=" + computerChoice + ".png>" + computerChoice;
+    document.getElementById("SpelerScore").innerHTML = playerScore;
+    document.getElementById("PCScore").innerHTML = computerScore;
+  }, 100);
 
+}
+
+function ResetAll(){
+  playerScore= 0;
+  computerScore= 0;
+  document.getElementById("SpelerScore").innerHTML = playerScore;
+  document.getElementById("PCScore").innerHTML = computerScore;  
+  reset();
 }
